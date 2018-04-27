@@ -24,7 +24,7 @@ import vUploader from 'v-uploader';
 /**
  * v-uploader plugin global config
  */
-const uploaderConfig = vue => {
+const uploaderConfig = () => {
     return {
         /**
          * file uploader server url
