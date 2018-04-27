@@ -47,7 +47,7 @@ const uploaderConfig = vue => {
          * for detail, visit fine-uploader site
          * https://docs.fineuploader.com/branch/master/endpoint_handlers/traditional.html
          */
-        uploadFileUrl: config.baseUrl + '/upload/publicFileUpload',
+        uploadFileUrl: 'http://xxx/upload/publicFileUpload',
         /**
          * file delete server url
          * the server just response 200 status, no need to return data
@@ -55,7 +55,7 @@ const uploaderConfig = vue => {
          * for detail, visit fine-uploader site
          * https://docs.fineuploader.com/branch/master/endpoint_handlers/traditional.html
          */
-        deleteFileUrl: config.baseUrl + '/upload/deleteUploadFile',
+        deleteFileUrl: 'http://xxx/upload/deleteUploadFile',
         /**
          * set the way to show upload message(upload fail message)
          *
@@ -63,11 +63,13 @@ const uploaderConfig = vue => {
          * @param message - upload file message
          */
         showMessage: (vue, message) => {
+            //using v-dialogs to show message
             vue.$vDialog.alert(message, null, {messageType: 'error'});
         }
     }
 };
 
+//install plugin with params
 Vue.use(vUploader, uploaderConfig);
 ```
 
