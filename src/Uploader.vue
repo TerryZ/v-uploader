@@ -4,7 +4,7 @@
             <div class="image-box">
                 <img :src="singleUploadImg" alt="" ref="simpleImg">
             </div>
-            <div class="btn singleFileUpload" ref="upload" ><i class="iconfont icon-uploader-open"></i> {{ui.choseFileButton}}</div>
+            <div class="btn singleFileUpload uploader-button" ref="upload" ><i class="iconfont icon-uploader-open"></i> {{ui.choseFileButton}}</div>
         </div>
 
         <div v-if="config && config.multiple" ref="multipleUpload" class="upload-list">
@@ -54,7 +54,7 @@
                 </div>
 
 
-                <div class="qq-upload-button-selector qq-upload-button">
+                <div class="qq-upload-button-selector qq-upload-button uploader-button">
                     <div><i class="iconfont icon-uploader-open"></i> {{ui.choseFileButton}}</div>
                 </div>
                 <div class="info-show">
@@ -81,7 +81,6 @@
 
     import {defaults, simpleDefaults, margeOptions, getI18n} from './constants';
 
-    let p;
     export default {
         name: "v-uploader",
         props:['setting'],
@@ -92,6 +91,9 @@
                 uploadedFiles: [],
                 deleteIndexs: [],
                 config: config,
+
+                options: {},
+
                 singleUploadImg: '',
                 ui: {},
                 fileSizeLimit: 0,
@@ -137,70 +139,88 @@
                         that.$emit('done', [data]);
                     }
                 };
-                p = margeOptions(simpleDefaults, params);
+                that.options = margeOptions(simpleDefaults, params);
             }else{
                 params.callback = data => {
                     if(data && typeof(data.success) != 'undefined' && data.success) {
                         that.uploadedFiles.push(data);
                     }
                 };
-                p = margeOptions(defaults, params);
-
-                this.fileSizeLimit = p.validation.sizeLimitStr;
-                this.fileTypeExts = p.validation.allowedExtensions.join(',')
+                that.options = margeOptions(defaults, params);
             }
         },
         mounted(){
             let that = this;
 
-            p.request.endpoint = this.hookSet.uploadFileUrl;
+            that.options.request.endpoint = this.hookSet.uploadFileUrl;
 
 
+            //console.log(that.$refs.upload);
             if(!this.config.multiple) {
                 holder.run({ images: this.$refs.simpleImg });
-                p.button = that.$refs.upload;
+                that.options.button = that.$refs.upload;
                 //upload error callback
                 //basic mode work only
-                p.callbacks.onError = (id,name,errorReason,xhr) => {
+                that.options.callbacks.onError = (id, name, errorReason, xhr) => {
                     that.hookSet.showMessage(that, errorReason);
                 };
-                new fu.FineUploaderBasic(p);
+                new fu.FineUploaderBasic(that.options);
             }else{
-                p.deleteFile.endpoint = this.hookSet.deleteFileUrl;
-                p.template = this.$refs.uploadArea;
-                p.element = this.$refs.multipleUpload;
-                p.callbacks.showMessage = message => {
+                that.options.deleteFile.endpoint = this.hookSet.deleteFileUrl;
+                that.options.template = this.$refs.uploadArea;
+                that.options.element = this.$refs.multipleUpload;
+                that.fileSizeLimit = that.options.validation.sizeLimitStr;
+                that.fileTypeExts = that.options.validation.allowedExtensions.join(',')
+                that.options.callbacks.showMessage = message => {
                     that.hookSet.showMessage(that, message);
                 }
-                p.callbacks.onDelete = id => {
+                that.options.callbacks.onDelete = id => {
                     that.deleteIndexs.push(id);
                     that.$emit('done', that.uploadedFiles.filter((val,index)=>{
                         return !that.deleteIndexs.includes(index);
                     }));
                 };
-                p.callbacks.onAllComplete = (succeeded, failed) => {
+                that.options.callbacks.onAllComplete = (succeeded, failed) => {
                     that.$emit('done', that.uploadedFiles);
                 };
-                new fu.FineUploader(p);
+                new fu.FineUploader(that.options);
             }
         }
-    }
+    };
 </script>
 
 <style lang="scss" scoped>
     $borderRadius: 2px;
     div.v-uploader{
+        margin-bottom: 10px;
         &.single-mode {
             display: inline-block;
         }
         &.multiple-mode {
             display: block;
         }
+        .uploader-button {
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 2px rgba(0,0,0,.2);
+            box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 2px rgba(0,0,0,.2);
+            -webkit-transition: all .2s ease-in-out;
+            -moz-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+            color: #212121;
+            background: #fff;
+            border-color: #fff;
+            outline: 0;
+            &:active {
+                -webkit-box-shadow: 0 10px 20px rgba(0,0,0,.2), 0 6px 6px rgba(0,0,0,.23);
+                box-shadow: 0 10px 20px rgba(0,0,0,.2), 0 6px 6px rgba(0,0,0,.23);
+            }
+        }
 
         div.single-upload {
             display: inline-block;
             margin-right: 5px;
-            margin-bottom: 5px;
             text-align: center;
             div.image-box {
                 -webkit-border-radius: $borderRadius;
@@ -233,24 +253,7 @@
                         }
                     }
                 }
-                .qq-upload-button {
-                    -webkit-border-radius: 2px;
-                    -moz-border-radius: 2px;
-                    border-radius: 2px;
-                    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 2px rgba(0,0,0,.2);
-                    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 2px rgba(0,0,0,.2);
-                    -webkit-transition: all .2s ease-in-out;
-                    -moz-transition: all .2s ease-in-out;
-                    transition: all .2s ease-in-out;
-                    color: #212121;
-                    background: #fff;
-                    border-color: #fff;
-                    outline: 0;
-                    &:active {
-                        -webkit-box-shadow: 0 10px 20px rgba(0,0,0,.2), 0 6px 6px rgba(0,0,0,.23);
-                        box-shadow: 0 10px 20px rgba(0,0,0,.2), 0 6px 6px rgba(0,0,0,.23);
-                    }
-                }
+                .qq-upload-button {}
                 .file-upload-finish {
                     cursor: pointer;
                     color: #fff;
