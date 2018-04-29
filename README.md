@@ -9,6 +9,12 @@ A Vue2 plugin to make files upload easier, you can drag files or select file in 
 </p>
 <br><br><br><br><br>
 
+## Demo、Document、Changelog
+Explorer on
+
+- [English site](https://terryz.github.io/vue/#/upload)
+- [国内站点](https://terryz.gitee.io/vue/#/upload)
+
 ## Install
 
 ``` bash
