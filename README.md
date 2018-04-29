@@ -5,7 +5,7 @@
 <p align="center"><img src="https://terryz.gitee.io/image/v-uploader/v-uploader-single.png" alt="v-uploader"></p>
 
 <p align="center">
-A <strong>Vue2</strong> plugin to make files upload easier, you can drag files or select file in dialog to upload
+A <strong>Vue2</strong> plugin to make files upload simple and easier, you can drag files or select file in dialog to upload
 </p>
 
 <p align="center">
