@@ -1,6 +1,6 @@
 # v-uploader
 
-A simple and easier to use file uploader, you can drag files or select file in dialog to upload, based on Vue2.x
+A Vue2 plugin to make files upload easier, you can drag files or select file in dialog to upload
 
 <p align="center">
   <a href="https://www.npmjs.com/package/v-uploader"><img src="https://img.shields.io/npm/v/v-uploader.svg"></a>
