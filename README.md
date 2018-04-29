@@ -53,6 +53,8 @@ Vue.use(vUploader, uploaderConfig);
 
 there is using [v-dialogs](https://github.com/TerryZ/v-dialogs) to show message in example
 
+## Plugin preview
+
 single file upload mode
 
 <p align="center"><img src="https://terryz.github.io/image/v-uploader/v-uploader-single.png" alt="v-uploader-single" ></p>
