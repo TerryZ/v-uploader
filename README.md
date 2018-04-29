@@ -38,42 +38,8 @@ import vUploader from 'v-uploader';
  */
 const uploaderConfig = () => {
     return {
-        /**
-         * file uploader server url
-         *
-         * return result
-         * {
-         *      success: true,//boolean, required
-         *      error: 'error message to display',//error message, required when upload fail
-         *
-         *      fileId: '123'//your custom file info
-         *      ...
-         * }
-         *
-         * for example
-         * success:
-         * {success: true, fileId: '123', fileName: '2018-04-26-1023.jpg'}
-         * fail:
-         * {success: false, error: 'file upload fail, out of space.'}
-         *
-         * for detail, visit fine-uploader site
-         * https://docs.fineuploader.com/branch/master/endpoint_handlers/traditional.html
-         */
-        uploadFileUrl: 'http://xxx/upload/publicFileUpload',
-        /**
-         * file delete server url
-         * the server just response 200 status, no need to return data
-         *
-         * for detail, visit fine-uploader site
-         * https://docs.fineuploader.com/branch/master/endpoint_handlers/traditional.html
-         */
-        deleteFileUrl: 'http://xxx/upload/deleteUploadFile',
-        /**
-         * set the way to show upload message(upload fail message)
-         *
-         * @param vue - the Vue instance
-         * @param message - upload file message
-         */
+        uploadFileUrl: 'http://xxx/upload',
+        deleteFileUrl: 'http://xxx/delete',
         showMessage: (vue, message) => {
             //using v-dialogs to show message
             vue.$vDialog.alert(message, null, {messageType: 'error'});
