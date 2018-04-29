@@ -62,3 +62,8 @@ single file upload mode
 multiple files upload mode
 
 <p align="center"><img src="https://terryz.github.io/image/v-uploader/v-uploader-multiple.png" alt="v-uploader-multiple" ></p>
+
+## Depend on
+
+- [fine-uploader](https://github.com/FineUploader/fine-uploader)
+- [holderjs](https://github.com/imsky/holder)
