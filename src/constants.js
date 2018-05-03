@@ -146,6 +146,12 @@ const userParamsDefaults = {
      */
     language: 'cn',
     /**
+     * show preview box in single upload mode
+     * @type boolean
+     * @default true
+     */
+    preview: true,
+    /**
      * file upload type
      * true: multiple file upload(default)
      * false: single file upload
@@ -206,11 +212,10 @@ const margeOptions = (p1, p2) => {
             if(json) p3.callback(json);
         };
     }
-
     return p;
 };
 
-const getI18n = language => (!language || language !== 'cn') ? i18n.en.ui : i18n.cn.ui ;
+const getI18n = language => (!language || language !== 'en') ? i18n.cn.ui : i18n.en.ui ;
 
 
 

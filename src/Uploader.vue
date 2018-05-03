@@ -1,7 +1,7 @@
 <template>
     <div :class="[uploaderClass]">
         <div class="single-upload" v-if="!config || !config.multiple">
-            <div class="image-box">
+            <div class="image-box" v-if="config && config.preview">
                 <img :src="singleUploadImg" alt="" ref="simpleImg">
             </div>
             <div class="btn singleFileUpload uploader-button" ref="upload" ><i class="iconfont icon-uploader-open"></i> {{ui.choseFileButton}}</div>
@@ -135,7 +135,7 @@
             if(!this.config.multiple) {
                 params.callback = data => {
                     if(data && typeof(data.success) != 'undefined' && data.success){
-                        that.singleUploadImg = data.url;
+                        if(that.config && that.config.preview) that.singleUploadImg = data.url;
                         that.$emit('done', [data]);
                     }
                 };
@@ -159,7 +159,7 @@
 
             //console.log(that.$refs.upload);
             if(!this.config.multiple) {
-                holder.run({ images: this.$refs.simpleImg });
+                if(this.config && this.config.preview) holder.run({ images: this.$refs.simpleImg });
                 that.options.button = that.$refs.upload;
                 //upload error callback
                 //basic mode work only
