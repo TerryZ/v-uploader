@@ -181,23 +181,23 @@ const userParamsDefaults = {
  * @param p2 - user pass options
  */
 const margeOptions = (p1, p2) => {
-    let p3 = Object.assign({}, userParamsDefaults, p2);
+    //let p2 = Object.assign({}, userParamsDefaults, p2);
     let p = JSON.parse(JSON.stringify(p1));
 
-    if(typeof(p3.button) !== 'undefined') p.button = p3.button;
-    if(typeof(p3.uploadUrl) !== 'undefined') p.request.endpoint = p3.uploadUrl;
-    if(typeof(p3.uploadFileObjName) !== 'undefined') p.request.inputName = p3.uploadFileObjName;
-    if(typeof(p3.fileTypeExts) !== 'undefined') p.validation.allowedExtensions = p3.fileTypeExts;
-    if(typeof(p3.fileSizeLimit) !== 'undefined') {
-        p.validation.sizeLimit = fileSize2Bytes(p3.fileSizeLimit, true);
-        p.validation.sizeLimitStr = p3.fileSizeLimit;
+    if(typeof(p2.button) !== 'undefined') p.button = p2.button;
+    if(typeof(p2.uploadUrl) !== 'undefined') p.request.endpoint = p2.uploadUrl;
+    if(typeof(p2.uploadFileObjName) !== 'undefined') p.request.inputName = p2.uploadFileObjName;
+    if(typeof(p2.fileTypeExts) !== 'undefined') p.validation.allowedExtensions = p2.fileTypeExts;
+    if(typeof(p2.fileSizeLimit) !== 'undefined') {
+        p.validation.sizeLimit = fileSize2Bytes(p2.fileSizeLimit, true);
+        p.validation.sizeLimitStr = p2.fileSizeLimit;
     }
-    if(typeof(p3.imageMaxHeight) !== 'undefined') p.validation.image.maxHeight = p3.imageMaxHeight;
-    if(typeof(p3.imageMaxWidth) !== 'undefined') p.validation.image.maxWidth = p3.imageMaxWidth;
-    if(typeof(p3.imageMinHeight) !== 'undefined') p.validation.image.minHeight = p3.imageMinHeight;
-    if(typeof(p3.imageMinWidth) !== 'undefined') p.validation.image.minWidth = p3.imageMinWidth;
+    if(typeof(p2.imageMaxHeight) !== 'undefined') p.validation.image.maxHeight = p2.imageMaxHeight;
+    if(typeof(p2.imageMaxWidth) !== 'undefined') p.validation.image.maxWidth = p2.imageMaxWidth;
+    if(typeof(p2.imageMinHeight) !== 'undefined') p.validation.image.minHeight = p2.imageMinHeight;
+    if(typeof(p2.imageMinWidth) !== 'undefined') p.validation.image.minWidth = p2.imageMinWidth;
 
-    if(p3.language && p3.language === 'cn'){
+    if(p2.language && p2.language === 'cn'){
         p.messages = i18n.cn.messages;
         p.text = i18n.cn.text;
     }
@@ -207,9 +207,9 @@ const margeOptions = (p1, p2) => {
         'fileTypeExts' : p.validation.allowedExtensions.join(',')
     };
 
-    if(p3.callback && typeof(p3.callback) === 'function'){
+    if(p2.callback && typeof(p2.callback) === 'function'){
         p.callbacks.onComplete = function(id,name,json,xhr){
-            if(json) p3.callback(json);
+            if(json) p2.callback(json);
         };
     }
     return p;
@@ -221,5 +221,6 @@ const getI18n = language => (!language || language !== 'en') ? i18n.cn.ui : i18n
 
 export {defaults};
 export {simpleDefaults};
+export {userParamsDefaults};
 export {margeOptions};
 export {getI18n};

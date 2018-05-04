@@ -79,14 +79,15 @@
     import 'fine-uploader/fine-uploader/fine-uploader-gallery.min.css';
     import holder from 'holderjs';
 
-    import {defaults, simpleDefaults, margeOptions, getI18n} from './constants';
+    import {defaults, simpleDefaults, userParamsDefaults, margeOptions, getI18n} from './constants';
 
     export default {
         name: "v-uploader",
         props:['setting'],
         data(){
-            let config = this.setting;
+            let config = Object.assign({}, userParamsDefaults, this.setting);
             if(!config) config = { multiple: false };
+            console.log(config);
             return {
                 uploadedFiles: [],
                 deleteIndexs: [],
