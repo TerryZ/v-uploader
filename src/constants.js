@@ -51,7 +51,7 @@ const i18n = {
             dropHere: '将文件拖到这里进行上传……',
             done: '完成',
             fileTypes: '文件类型',
-            fileSizeLimit: '文件容易限制'
+            fileSizeLimit: '文件容量限制'
         }
 
     },
