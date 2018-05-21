@@ -151,6 +151,11 @@ const userParamsDefaults = {
      * @default true
      */
     preview: true,
+    previewImg: undefined,
+    buttonText: undefined,
+    buttonIcon: true,
+    previewWidth: 200,
+    previewHeight: 150,
     /**
      * file upload type
      * true: multiple file upload(default)
@@ -160,12 +165,23 @@ const userParamsDefaults = {
     button: undefined,             //the upload 'button' dom object
     uploadUrl : undefined,         //receive file server side url
     uploadFileObjName : undefined,//upload file object name
+
+    itemLimit: 0,                   //Maximum number of items that can be potentially uploaded in this session. set 0 to unlimited
     fileSizeLimit : undefined,    //upload file size limit - default 10MB
     fileTypeExts : undefined,     //cannot upload file types
     imageMaxHeight : 0,
     imageMaxWidth : 0,
     imageMinHeight : 0,
     imageMinWidth : 0,
+    /**
+     * the callback before file upload
+     *
+     * @param id - file id
+     * @param name - file name
+     *
+     * @return boolean - return false to abort file upload
+     */
+    beforeUpload: undefined,
     /**
      * upload success callback
      * @param id - file id

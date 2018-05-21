@@ -1,12 +1,16 @@
 <template>
     <div :class="[uploaderClass]">
+        <!-- single upload file mode -->
         <div class="single-upload" v-if="!config || !config.multiple">
             <div class="image-box" v-if="config && config.preview">
-                <img :src="singleUploadImg" alt="" ref="simpleImg">
+                <img :src="singleUploadImg" alt="" ref="simpleImg" :width="config.previewWidth" :height="config.previewHeight">
             </div>
-            <div class="btn singleFileUpload uploader-button" ref="upload" ><i class="iconfont icon-uploader-open"></i> {{ui.choseFileButton}}</div>
+            <div class="btn singleFileUpload uploader-button" ref="upload" >
+                <i class="iconfont icon-uploader-open" v-if="config.buttonIcon"></i> {{config.buttonText?config.buttonText:ui.choseFileButton}}
+            </div>
         </div>
 
+        <!-- multiple upload file mode -->
         <div v-if="config && config.multiple" ref="multipleUpload" class="upload-list">
 
         </div>
@@ -55,7 +59,9 @@
 
 
                 <div class="qq-upload-button-selector qq-upload-button uploader-button">
-                    <div><i class="iconfont icon-uploader-open"></i> {{ui.choseFileButton}}</div>
+                    <div>
+                        <i class="iconfont icon-uploader-open" v-if="config.buttonIcon"></i> {{config.buttonText?config.buttonText:ui.choseFileButton}}
+                    </div>
                 </div>
                 <div class="info-show">
                     <div>{{ui.fileSizeLimit}}：<span v-text="fileSizeLimit"></span><br/>{{ui.fileTypes}}：<span v-text="fileTypeExts"></span></div>
@@ -87,7 +93,6 @@
         data(){
             let config = Object.assign({}, userParamsDefaults, this.setting);
             if(!config) config = { multiple: false };
-            console.log(config);
             return {
                 uploadedFiles: [],
                 deleteIndexs: [],
@@ -129,7 +134,8 @@
 
 
             this.ui = getI18n(this.config.language);
-            this.singleUploadImg = `holder.js/200x150?text=${this.ui.thumbnail}&size=16`;
+            let imgHolder = `holder.js/${this.config.previewWidth}x${this.config.previewHeight}?text=${this.ui.thumbnail}&size=16`;
+            this.singleUploadImg = this.config.previewImg?this.config.previewImg:imgHolder;
             this.choseFileButton = this.ui.choseFileButton;
 
             let params = JSON.parse(JSON.stringify(this.config));
@@ -157,19 +163,22 @@
 
             that.options.request.endpoint = this.hookSet.uploadFileUrl;
             if(!this.config.multiple) {
-                if(this.config && this.config.preview) holder.run({ images: this.$refs.simpleImg });
+                if(this.config && this.config.preview && !this.config.previewImg)
+                    holder.run({ images: this.$refs.simpleImg });
                 that.options.button = that.$refs.upload;
                 //upload error callback
                 //basic mode work only
                 that.options.callbacks.onError = (id, name, errorReason, xhr) => {
                     that.hookSet.showMessage(that, errorReason);
                 };
+                if(this.config.beforeUpload && typeof(this.config.beforeUpload) === 'function')
+                    that.options.callbacks.onSubmit = this.config.beforeUpload;
                 new fu.FineUploaderBasic(that.options);
             }else{
                 that.options.deleteFile.endpoint = this.hookSet.deleteFileUrl;
                 that.options.template = this.$refs.uploadArea;
                 that.options.element = this.$refs.multipleUpload;
-                that.options.callbacks.showMessage = message => {
+                that.options.showMessage = message => {
                     that.hookSet.showMessage(that, message);
                 }
                 that.options.callbacks.onDelete = id => {
@@ -181,6 +190,9 @@
                 that.options.callbacks.onAllComplete = (succeeded, failed) => {
                     that.$emit('done', that.uploadedFiles);
                 };
+                if(this.config.itemLimit) that.options.validation.itemLimit = this.config.itemLimit;
+                if(this.config.beforeUpload && typeof(this.config.beforeUpload) === 'function')
+                    that.options.callbacks.onSubmit = this.config.beforeUpload;
                 new fu.FineUploader(that.options);
             }
         }
