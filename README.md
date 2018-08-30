@@ -15,7 +15,7 @@ A <strong>Vue2</strong> plugin to make files upload simple and easier, you can d
 </p>
 <br><br><br><br><br>
 
-## Demo、Document、Changelog
+## Demo、Document
 Explorer on
 
 - [English site](https://terryz.github.io/vue/#/upload)
