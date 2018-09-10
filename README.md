@@ -86,7 +86,7 @@ const uploaderConfig = () => {
 Vue.use(vUploader, uploaderConfig);
 ```
 
-there is using **[v-dialogs](https://github.com/TerryZ/v-dialogs)** to show message in example
+There is using **[v-dialogs](https://github.com/TerryZ/v-dialogs)** to show message in example
 
 <br><br>
 
