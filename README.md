@@ -46,7 +46,7 @@ Explorer on
 
 ## Plugin preview
 
-single file upload mode
+single file upload with image preview
 
 <p align="center"><img src="https://terryz.github.io/image/v-uploader/v-uploader-single.png" alt="v-uploader-single" ></p>
 
