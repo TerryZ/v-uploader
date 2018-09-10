@@ -7,7 +7,8 @@
 <p align="center"><img src="https://terryz.gitee.io/image/v-uploader/v-uploader-single.png" alt="v-uploader"></p>
 
 <p align="center">
-A <strong>Vue2</strong> plugin make files upload simple and easier, single file upload with image preview, multiple upload with drag and drop
+  A <strong>Vue2</strong> plugin make files upload simple and easier, <br>
+  single file upload with image preview, multiple upload with drag and drop
 </p>
 
 <p align="center">
