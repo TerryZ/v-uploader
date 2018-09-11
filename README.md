@@ -82,7 +82,7 @@ const uploaderConfig = () => {
     }
 };
 
-//install plugin with params
+//install plugin with options
 Vue.use(vUploader, uploaderConfig);
 ```
 
