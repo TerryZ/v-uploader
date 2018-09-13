@@ -50,7 +50,7 @@ single file upload with image preview
 
 <p align="center"><img src="https://terryz.github.io/image/v-uploader/v-uploader-single.png" alt="v-uploader-single" ></p>
 
-multiple files upload mode
+multiple files upload with drag and drop
 
 <p align="center"><img src="https://terryz.github.io/image/v-uploader/v-uploader-multiple.png" alt="v-uploader-multiple" ></p>
 
