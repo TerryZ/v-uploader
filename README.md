@@ -20,13 +20,15 @@
 <br><br><br><br><br>
 
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FTerryZ%2Fv-uploader.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FTerryZ%2Fv-uploader?ref=badge_large)
 
 ## Demos、Documents
 Explorer on
 
 - [English site](https://terryz.github.io/vue/#/upload)
 - [国内站点](https://terryz.gitee.io/vue/#/upload)
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FTerryZ%2Fv-uploader.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FTerryZ%2Fv-uploader?ref=badge_large)
+
 
 <br><br>
 
