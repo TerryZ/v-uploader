@@ -21,7 +21,7 @@
 
 
 
-## Demos、Documents
+## Demos and Documents
 Explorer on
 
 - [English site](https://terryz.github.io/vue/#/upload)
