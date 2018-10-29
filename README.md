@@ -76,14 +76,12 @@ import vUploader from 'v-uploader';
 /**
  * v-uploader plugin global config
  */
-const uploaderConfig = () => {
-    return {
-        uploadFileUrl: 'http://xxx/upload',
-        deleteFileUrl: 'http://xxx/delete',
-        showMessage: (vue, message) => {
-            //using v-dialogs to show message
-            vue.$vDialog.alert(message, null, {messageType: 'error'});
-        }
+const uploaderConfig = {
+    uploadFileUrl: 'http://xxx/upload',
+    deleteFileUrl: 'http://xxx/delete',
+    showMessage: (vue, message) => {
+        //using v-dialogs to show message
+        vue.$vDialog.alert(message, null, {messageType: 'error'});
     }
 };
 
