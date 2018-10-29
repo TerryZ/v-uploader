@@ -70,7 +70,7 @@ npm i v-uploader --save
 Include plugin in your `main.js` file.
 
 ```js
-import Vue from 'vue'
+import Vue from 'vue';
 import vUploader from 'v-uploader';
 
 /**
