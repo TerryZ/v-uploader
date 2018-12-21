@@ -2,8 +2,6 @@
 
 <p align="center"><img src="https://terryz.gitee.io/image/v-uploader/v-uploader-single.png" alt="v-uploader"></p>
 
-<br><br>
-
 <h3 align="center">v-uploader</h3>
 
 <p align="center">
