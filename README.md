@@ -1,10 +1,10 @@
 <br><br>
 
-<h3 align="center">v-uploader</h3>
+<p align="center"><img src="https://terryz.gitee.io/image/v-uploader/v-uploader-single.png" alt="v-uploader"></p>
 
 <br><br>
 
-<p align="center"><img src="https://terryz.gitee.io/image/v-uploader/v-uploader-single.png" alt="v-uploader"></p>
+<h3 align="center">v-uploader</h3>
 
 <p align="center">
   A <strong>Vue2</strong> plugin make files upload simple and easier, <br>
