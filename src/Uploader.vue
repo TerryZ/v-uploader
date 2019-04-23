@@ -163,6 +163,10 @@
                 type: String,
                 default: 'jpeg,jpg,gif,png'
             },
+            fileParams: {
+                type: Object,
+                default: () => ({})
+            },
             imageMaxHeight: {
                 type: Number,
                 default: 0
@@ -188,6 +192,11 @@
              * @return boolean - return false to abort file upload
              */
             beforeUpload: Function,
+            //set custom upload headers
+            uploadHeaders: {
+                type: Object,
+                default: () => ({})
+            },
             //file uploader service url
             uploadFileUrl: {
                 type: String,
