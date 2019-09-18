@@ -19,15 +19,12 @@
 
 
 
-## Demos and Documents
+## Examples and Documentation
+
 Explorer on
 
 - [English site](https://terryz.github.io/vue/#/upload)
 - [国内站点](https://terryz.gitee.io/vue/#/upload)
-
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FTerryZ%2Fv-uploader.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FTerryZ%2Fv-uploader?ref=badge_large)
-
-<br><br>
 
 ## Plugin preview
 
@@ -39,7 +36,44 @@ multiple files upload with drag and drop
 
 <p align="center"><img src="https://terryz.github.io/image/v-uploader/v-uploader-multiple.png" alt="v-uploader-multiple" ></p>
 
-<br><br>
+## Installation
+
+```
+npm i v-uploader --S
+```
+
+Include and install plugin in your `main.js` file.
+
+```js
+import Vue from 'vue';
+import vUploader from 'v-uploader';
+
+/**
+ * v-uploader plugin global config
+ */
+const uploaderConfig = {
+  uploadFileUrl: 'http://xxx/upload',
+  deleteFileUrl: 'http://xxx/delete',
+  showMessage: (vue, message) => {
+    //using v-dialogs to show message
+    vue.$vDialog.alert(message, null, {messageType: 'error'})
+  }
+}
+
+//install plugin with options
+Vue.use(vUploader, uploaderConfig);
+```
+
+There is using **[v-dialogs](https://github.com/TerryZ/v-dialogs)** to show message in example
+
+## Depend on
+
+- [fine-uploader](https://github.com/FineUploader/fine-uploader)
+- [holderjs](https://github.com/imsky/holder)
+
+## License
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FTerryZ%2Fv-uploader.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FTerryZ%2Fv-uploader?ref=badge_large)
 
 ## Vue plugin series
 
@@ -56,42 +90,3 @@ multiple files upload with drag and drop
 | [v-suggest](https://github.com/TerryZ/v-suggest) | [![npm version](https://img.shields.io/npm/v/v-suggest.svg)](https://www.npmjs.com/package/v-suggest) | A Vue2 plugin for input suggestions by autocomplete |
 | [v-playback](https://github.com/TerryZ/v-playback) | [![npm version](https://img.shields.io/npm/v/v-playback.svg)](https://www.npmjs.com/package/v-playback) | A Vue2 plugin to make video play easier |
 | [v-selectmenu](https://github.com/TerryZ/v-selectmenu) | [![npm version](https://img.shields.io/npm/v/v-selectmenu.svg)](https://www.npmjs.com/package/v-selectmenu) | A simple, easier and highly customized menu solution |
-
-<br><br>
-
-## Install
-
-``` bash
-npm i v-uploader --save
-```
-
-Include plugin in your `main.js` file.
-
-```js
-import Vue from 'vue';
-import vUploader from 'v-uploader';
-
-/**
- * v-uploader plugin global config
- */
-const uploaderConfig = {
-    uploadFileUrl: 'http://xxx/upload',
-    deleteFileUrl: 'http://xxx/delete',
-    showMessage: (vue, message) => {
-        //using v-dialogs to show message
-        vue.$vDialog.alert(message, null, {messageType: 'error'});
-    }
-};
-
-//install plugin with options
-Vue.use(vUploader, uploaderConfig);
-```
-
-There is using **[v-dialogs](https://github.com/TerryZ/v-dialogs)** to show message in example
-
-<br><br>
-
-## Depend on
-
-- [fine-uploader](https://github.com/FineUploader/fine-uploader)
-- [holderjs](https://github.com/imsky/holder)
