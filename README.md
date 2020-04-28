@@ -28,11 +28,11 @@ Explorer on
 
 ## Plugin preview
 
-single file upload with image preview
+Single file upload with image preview
 
 <p align="center"><img src="https://terryz.github.io/image/v-uploader/v-uploader-single.png" alt="v-uploader-single" ></p>
 
-multiple files upload with drag and drop
+Multiple files upload with drag and drop
 
 <p align="center"><img src="https://terryz.github.io/image/v-uploader/v-uploader-multiple.png" alt="v-uploader-multiple" ></p>
 
@@ -45,8 +45,8 @@ npm i v-uploader --S
 Include and install plugin in your `main.js` file.
 
 ```js
-import Vue from 'vue';
-import vUploader from 'v-uploader';
+import Vue from 'vue'
+import vUploader from 'v-uploader'
 
 /**
  * v-uploader plugin global config
