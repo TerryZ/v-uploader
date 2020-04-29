@@ -46,7 +46,7 @@ Include and install plugin in your `main.js` file.
 
 ```js
 import Vue from 'vue'
-import vUploader from 'v-uploader'
+import Uploader from 'v-uploader'
 
 /**
  * v-uploader plugin global config
@@ -61,7 +61,7 @@ const uploaderConfig = {
 }
 
 //install plugin with options
-Vue.use(vUploader, uploaderConfig);
+Vue.use(Uploader, uploaderConfig);
 ```
 
 There is using **[v-dialogs](https://github.com/TerryZ/v-dialogs)** to show message in example
