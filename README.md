@@ -59,8 +59,8 @@ const uploaderConfig = {
   }
 }
 
-//install plugin with options
-Vue.use(Uploader, uploaderConfig);
+// install plugin with options
+Vue.use(Uploader, uploaderConfig)
 ```
 
 There is using **[v-dialogs](https://github.com/TerryZ/v-dialogs)** to show message in example
