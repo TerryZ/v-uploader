@@ -65,7 +65,7 @@ Vue.use(Uploader, uploaderConfig)
 
 There is using **[v-dialogs](https://github.com/TerryZ/v-dialogs)** to show message in example
 
-## Depend on
+## Dependencies
 
 - [fine-uploader](https://github.com/FineUploader/fine-uploader)
 - [holderjs](https://github.com/imsky/holder)
