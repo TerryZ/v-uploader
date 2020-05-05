@@ -55,7 +55,7 @@ const uploaderConfig = {
   deleteFileUrl: 'http://some-site/delete',
   showMessage: (vue, message) => {
     // using v-dialogs to show message
-    vue.$vDialog.alert(message, null, { messageType: 'error' })
+    vue.$dlg.alert(message, null, { messageType: 'error' })
   }
 }
 
