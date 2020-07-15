@@ -13,12 +13,13 @@ const Plugin = {
             if(typeof options.uploadFileObjName === 'string') uploader.props.uploadFileObjName.default = options.uploadFileObjName;
             if(typeof options.itemLimit === 'number') uploader.props.itemLimit.default = options.itemLimit;
             if(typeof options.fileSizeLimit === 'string') uploader.props.fileSizeLimit.default = options.fileSizeLimit;
+            if(typeof options.fileParams === 'object') uploader.props.fileParams.default = Object.assign({fileSizeLimit:options.fileSizeLimit,fileTypeExts:options.fileTypeExts},options.fileParams);
             if(typeof options.fileTypeExts === 'string') uploader.props.fileTypeExts.default = options.fileTypeExts;
             if(typeof options.imageMaxHeight === 'number') uploader.props.imageMaxHeight.default = options.imageMaxHeight;
             if(typeof options.imageMaxWidth === 'number') uploader.props.imageMaxWidth.default = options.imageMaxWidth;
             if(typeof options.imageMinHeight === 'number') uploader.props.imageMinHeight.default = options.imageMinHeight;
             if(typeof options.imageMinWidth === 'number') uploader.props.imageMinWidth.default = options.imageMinWidth;
-
+            if(typeof options.uploadHeaders === 'object') uploader.props.uploadHeaders.default = options.uploadHeaders;
             if(typeof options.uploadFileUrl === 'string') uploader.props.uploadFileUrl.default = options.uploadFileUrl;
             if(typeof options.deleteFileUrl === 'string') uploader.props.deleteFileUrl.default = options.deleteFileUrl;
             if(typeof options.showMessage === 'function') uploader.props.showMessage.default = options.showMessage;
