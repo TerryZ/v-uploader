@@ -26,6 +26,10 @@
     "file-upload",
     "multiple-upload"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TerryZ/v-uploader.git"
+  },  
   "browserslist": [
     "> 1%",
     "last 2 versions",
