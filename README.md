@@ -46,6 +46,7 @@ Include and install plugin in your `main.js` file.
 ```js
 import Vue from 'vue'
 import Uploader from 'v-uploader'
+import { DialogAlert } from 'v-dialogs'
 
 /**
  * v-uploader plugin global config
@@ -54,16 +55,16 @@ const uploaderConfig = {
   uploadFileUrl: 'https://some-site/upload',
   deleteFileUrl: 'https://some-site/delete',
   showMessage: (vue, message) => {
-    // using v-dialogs to show message
-    vue.$dlg.alert(message, null, { messageType: 'error' })
+    // using v-dialogs to display error message
+    DialogAlert(message, { messageType: 'error' })
   }
 }
 
-// install plugin with options
+// Globally install plugin with options
 Vue.use(Uploader, uploaderConfig)
 ```
 
-There is using **[v-dialogs](https://github.com/TerryZ/v-dialogs)** to show message in example
+Use **[v-dialogs](https://github.com/TerryZ/v-dialogs)** plugin to display message for example
 
 ## Dependencies
 
